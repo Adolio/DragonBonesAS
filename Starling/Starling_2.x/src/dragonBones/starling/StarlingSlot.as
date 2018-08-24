@@ -184,6 +184,29 @@
 				}
 			}
 		}
+		
+		/**
+		 * @language en_US
+		 * Colorize the render display.
+		 * @param    value the color
+		 * @version DragonBones 5.5
+		 */
+		public function colorize(value:uint):void
+		{
+			const isMeshDisplay:Boolean = _meshData && _renderDisplay === _meshDisplay;
+			if (isMeshDisplay)
+			{
+				var meshDisplay:Mesh = _renderDisplay as Mesh;
+				for (var i:int = 0; i < meshDisplay.numVertices; ++i)
+					meshDisplay.setVertexColor(i, value);
+			}
+			else
+			{
+				var normalDisplay:Image = _renderDisplay as Image;
+				normalDisplay.color = value;
+			}
+		}
+		
 		/**
 		 * @private
 		 */
